@@ -25,6 +25,7 @@ export * from "./orca_create_single_sided_liquidity_pool";
 export * from "./orca_fetch_positions";
 export * from "./orca_open_centered_position_with_liquidity";
 export * from "./orca_open_single_sided_position";
+export * from "./get_account_info";
 export * from "./get_all_domains_tlds";
 export * from "./get_all_registered_all_domains";
 export * from "./get_owned_domains_for_tld";

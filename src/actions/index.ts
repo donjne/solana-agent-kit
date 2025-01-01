@@ -15,6 +15,7 @@ import lendAssetAction from "./lendAsset";
 import createGibworkTaskAction from "./createGibworkTask";
 import resolveSolDomainAction from "./resolveSolDomain";
 import pythFetchPriceAction from "./pythFetchPrice";
+import accountInfoAction from "./accountInfo";
 import getOwnedDomainsForTLDAction from "./getOwnedDomainsForTLD";
 import getPrimaryDomainAction from "./getPrimaryDomain";
 import getAllDomainsTLDsAction from "./getAllDomainsTLDs";
@@ -36,6 +37,7 @@ export const ACTIONS = {
   "TRADE_ACTION" : tradeAction,
   "REQUEST_FUNDS_ACTION" : requestFundsAction,
   "RESOLVE_DOMAIN_ACTION" : resolveDomainAction,
+  "GET_ACCOUNT_INFO_ACTION" : accountInfoAction,
   "GET_TOKEN_DATA_ACTION" : getTokenDataAction,
   "GET_TPS_ACTION" : getTPSAction,
   "FETCH_PRICE_ACTION" : fetchPriceAction,

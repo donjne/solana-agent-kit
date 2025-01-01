@@ -100,6 +100,21 @@ export interface GibworkCreateTaskReponse {
   signature?: string | undefined;
 }
 
+export interface HeliusAccountInfo {
+  balance: string;
+  executable: boolean;
+  owner: string;
+  lamports: number;
+  data: {
+    program: string;
+    parsedData?: any;
+  };
+  tokenAccounts: {
+    mint: string;
+    amount: number;
+  }[];
+}
+
 /**
  * Example of an action with input and output
  */

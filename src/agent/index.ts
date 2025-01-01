@@ -6,6 +6,7 @@ import { Config } from "../types";
 import {
   deploy_collection,
   deploy_token,
+  get_account_info,
   get_balance,
   get_balance_other,
   getTPS,
@@ -60,6 +61,7 @@ import {
   MintCollectionNFTResponse,
   PumpfunLaunchResponse,
   PumpFunTokenOptions,
+  HeliusAccountInfo,
 } from "../types";
 import { BN } from "@coral-xyz/anchor";
 
@@ -125,6 +127,14 @@ export class SolanaAgentKit {
     options: CollectionOptions,
   ): Promise<CollectionDeployment> {
     return deploy_collection(this, options);
+  }
+
+  async getAccountInfo(accountAddress?: string): Promise<{
+    status: 'success' | 'error',
+    account?: HeliusAccountInfo,
+    message?: string
+  }> {
+    return get_account_info(this, accountAddress);
   }
 
   async getBalance(token_address?: PublicKey): Promise<number> {
