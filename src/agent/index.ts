@@ -37,8 +37,8 @@ import {
   registerDomain,
   request_faucet_funds,
   trade,
-  // limitOrder,
-  // batchOrder,
+  limitOrder,
+  batchOrder,
   cancelAllOrders,
   withdrawAll,
   closePerpTradeShort,
@@ -86,7 +86,7 @@ import {
   PumpFunTokenOptions,
   UITokenMetadata,
   Username,
-  // OrderParams,
+  OrderParams,
 } from "../types";
 
 /**
@@ -349,21 +349,21 @@ export class SolanaAgentKit {
     return trade(this, outputMint, inputAmount, inputMint, slippageBps);
   }
 
-  // async limitOrder(
-  //   marketId: PublicKey,
-  //   quantity: number,
-  //   side: string,
-  //   price: number,
-  // ): Promise<string> {
-  //   return limitOrder(this, marketId, quantity, side, price);
-  // }
+  async limitOrder(
+    marketId: PublicKey,
+    quantity: number,
+    side: string,
+    price: number,
+  ): Promise<string> {
+    return limitOrder(this, marketId, quantity, side, price);
+  }
 
-  // async batchOrder(
-  //   marketId: PublicKey,
-  //   orders: OrderParams[],
-  // ): Promise<string> {
-  //   return batchOrder(this, marketId, orders);
-  // }
+  async batchOrder(
+    marketId: PublicKey,
+    orders: OrderParams[],
+  ): Promise<string> {
+    return batchOrder(this, marketId, orders);
+  }
 
   async cancelAllOrders(marketId: PublicKey): Promise<string> {
     return cancelAllOrders(this, marketId);
