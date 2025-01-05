@@ -7,9 +7,23 @@ import { Config, TokenCheck } from "../types";
 import {
   deploy_collection,
   deploy_token,
+  get_account_info,
+  get_asset,
+  get_assets,
   get_balance,
   get_balance_other,
+  get_block_transactions,
+  get_cnft_transactions,
+  get_concurrent_merkle_tree,
+  get_current_slot,
+  get_deprecated_image,
+  get_nifty_asset,
+  get_solana_domain,
+  get_price,
+  get_raw_transaction,
   getTPS,
+  get_transaction,
+  get_transactions,
   resolveSolDomain,
   getPrimaryDomain,
   launchPumpFunToken,
@@ -34,6 +48,7 @@ import {
   transfer,
   getTokenDataByAddress,
   getTokenDataByTicker,
+  search_assets,
   stakeWithJup,
   stakeWithSolayer,
   sendCompressedAirdrop,
@@ -69,6 +84,8 @@ import {
   MintCollectionNFTResponse,
   PumpfunLaunchResponse,
   PumpFunTokenOptions,
+  UITokenMetadata,
+  Username,
   // OrderParams,
 } from "../types";
 
@@ -142,8 +159,51 @@ export class SolanaAgentKit {
     return deploy_collection(this, options);
   }
 
+  async getAccountInfo(accountAddress?: string): Promise<{ 
+    status: 'success' | 'error', 
+    account?: {
+      context: { slot: number };
+      value: {
+        data: any;
+        executable: boolean;
+        lamports: number;
+        owner: PublicKey;
+        rentEpoch?: number;
+      } | null;
+      balance: number;
+    },
+    message?: string
+  }> {
+    return get_account_info(this, accountAddress);
+  }
+
+  async getAsset(asset: string, isMainnet: boolean): Promise<{ 
+    status: 'success' | 'error', 
+    metadata?: UITokenMetadata,
+    message?: string
+  }> {
+    return get_asset(this, asset, isMainnet);
+  }
+
+  async getAssets(input: Record<string, any>): Promise<{ 
+    status: 'success' | 'error', 
+    result?: any,
+    message?: string
+  }> {
+    return get_assets(this, input);
+  }
+
   async getBalance(token_address?: PublicKey): Promise<number> {
     return get_balance(this, token_address);
+  }
+
+  async getBlockTransactions(input: Record<string, any>): Promise<{ 
+    status: 'success' | 'error', 
+    oldest?: string,
+    result?: any[],
+    message?: string
+  }> {
+    return get_block_transactions(this, input);
   }
 
   async getBalanceOther(
@@ -153,12 +213,111 @@ export class SolanaAgentKit {
     return get_balance_other(this, walletAddress, tokenAddress);
   }
 
+  async getCNFTransactions(input: Record<string, any>): Promise<{ 
+    status: 'success' | 'error', 
+    oldest?: string,
+    result?: any[],
+    message?: string
+  }> {
+    return get_cnft_transactions(this, input);
+  }
+
+  async getConcurrentMerkleTree(input: Record<string, any>): Promise<{ 
+    status: 'success' | 'error', 
+    result?: {
+      authority: PublicKey;
+      canopyDepth: number;
+      creationSlot: number;
+      maxBufferSize: number;
+      rightMostIndex: number;
+      root: Buffer;
+      seq: string;
+      treeHeight: number;
+    },
+    message?: string
+  }> {
+    return get_concurrent_merkle_tree(this, input);
+  }
+
+  async getCurrentSlot(isMainnet: boolean): Promise<{ 
+    status: 'success' | 'error', 
+    slot?: number,
+    message?: string
+  }> {
+    return get_current_slot(this, isMainnet);
+  }
+
+  async getDeprecatedImage(account: string): Promise<{ 
+    status: 'success' | 'error', 
+    imageUrl?: string,
+    message?: string
+  }> {
+    return get_deprecated_image(this, account);
+  }
+
+  async getNiftyAsset(address: string, isMainnet: boolean): Promise<{ 
+    status: 'success' | 'error', 
+    assetData?: any,
+    message?: string
+  }> {
+    return get_nifty_asset(this, address, isMainnet);
+  }
+
+  async getSolanaDomain(address?: string): Promise<{ 
+    status: 'success' | 'error', 
+    usernames?: Username[],
+    message?: string
+  }> {
+    return get_solana_domain(this, address);
+  }
+
+  async getRawTransaction(signature: string, isMainnet: boolean): Promise<{ 
+    status: 'success' | 'error', 
+    transaction?: any,
+    message?: string
+  }> {
+    return get_raw_transaction(this, signature, isMainnet);
+  }
+
+  async getTokenPrice(token: string): Promise<{ 
+    status: 'success' | 'error', 
+    price?: number,
+    message?: string
+  }> {
+    return get_price(this, token);
+  }
+
+  async getTransaction(input: Record<string, any>): Promise<{ 
+    status: 'success' | 'error', 
+    transaction?: any,
+    message?: string
+  }> {
+    return get_transaction(this, input);
+  }
+
+  async getTransactions(input: Record<string, any>): Promise<{ 
+    status: 'success' | 'error', 
+    oldest?: string,
+    result?: any[],
+    message?: string
+  }> {
+    return get_transactions(this, input);
+  }
+
   async mintNFT(
     collectionMint: PublicKey,
     metadata: Parameters<typeof mintCollectionNFT>[2],
     recipient?: PublicKey,
   ): Promise<MintCollectionNFTResponse> {
     return mintCollectionNFT(this, collectionMint, metadata, recipient);
+  }
+
+  async searchAssets(input: Record<string, any>): Promise<{ 
+    status: 'success' | 'error', 
+    result?: any,
+    message?: string
+  }> {
+    return search_assets(this, input);
   }
 
   async transfer(

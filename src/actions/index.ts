@@ -28,6 +28,21 @@ import raydiumCreateAmmV4Action from "./raydiumCreateAmmV4";
 import createOrcaSingleSidedWhirlpoolAction from "./createOrcaSingleSidedWhirlpool";
 import launchPumpfunTokenAction from "./launchPumpfunToken";
 import getWalletAddressAction from "./getWalletAddress";
+import getAssetsAction from "./getAssets";
+import getSolanaDomainAction from "./getSolanaDomain";
+import getAssetAction from "./getAsset";
+import getBlockTransactionsAction from "./getBlockTransactions";
+import getCNFTransactionsAction from "./getCNFTTransactions";
+import getConcurrentMerkleTreeAction from "./getConcurrentMerkleTree";
+import getAccountInfoAction from "./getAccountInfo";
+import getCurrentSlotAction from "./getCurrentSlot";
+import getDeprecatedImageAction from "./getDeprecatedImage";
+import getNiftyAssetAction from "./getNiftyAsset";
+import getPriceAction from "./getTokenPrice";
+import getRawTransactionAction from "./getRawTransaction";
+import searchAssetsAction from "./searchAssets";
+import getTransactionAction from "./getTransaction";
+import getTransactionsAction from "./getTransactions";
 
 export const ACTIONS = {
   WALLET_ADDRESS_ACTION: getWalletAddressAction,
@@ -61,6 +76,21 @@ export const ACTIONS = {
   CREATE_ORCA_SINGLE_SIDED_WHIRLPOOL_ACTION:
     createOrcaSingleSidedWhirlpoolAction,
   LAUNCH_PUMPFUN_TOKEN_ACTION: launchPumpfunTokenAction,
+  GET_ACCOUNT_INFO_ACTION: getAccountInfoAction,
+  GET_ASSETS_ACTION: getAssetsAction,
+  GET_SOLANA_DOMAIN_ACTION: getSolanaDomainAction,
+  GET_ASSET_ACTION: getAssetAction,
+  GET_BLOCK_TRANSACTIONS_ACTION: getBlockTransactionsAction,
+  GET_CNFT_TRANSACTIONS_ACTION: getCNFTransactionsAction,
+  GET_CONCURRENT_MERKLE_TREE_ACTION: getConcurrentMerkleTreeAction,
+  GET_CURRENT_SLOT_ACTION: getCurrentSlotAction,
+  GET_DEPRECATED_IMAGE_ACTION: getDeprecatedImageAction,
+  GET_NIFTY_ASSET_ACTION: getNiftyAssetAction,
+  GET_PRICE_ACTION: getPriceAction,
+  GET_RAW_TRANSACTION_ACTION: getRawTransactionAction,
+  SEARCH_ASSETS_ACTION: searchAssetsAction,
+  GET_TRANSACTION_ACTION: getTransactionAction,
+  GET_TRANSACTIONS_ACTION: getTransactionsAction,
 };
 
 export type { Action, ActionExample, Handler } from "../types/action";

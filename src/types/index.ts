@@ -101,6 +101,35 @@ export interface GibworkCreateTaskReponse {
   signature?: string | undefined;
 }
 
+export interface Username {
+  type: "bonfida";
+  username: string;
+}
+
+export interface UITokenMetadata {
+  address: string;
+  assetHash?: string;
+  attributes: any[];
+  burnt?: boolean;
+  collectionKey?: string;
+  compressed: boolean;
+  creatorHash?: string;
+  creators: any[];
+  dataHash?: string;
+  delegate: string;
+  description: string;
+  frozen?: boolean;
+  image: string;
+  leafId?: string;
+  mintExtensions: string;
+  mutable: boolean;
+  name: string;
+  owner: string;
+  sellerFeeBasisPoints: number;
+  seq?: string;
+  tree?: string;
+}
+
 /**
  * Example of an action with input and output
  */
